@@ -1,29 +1,21 @@
-/* ============================================
-   CALENDAR 2026 — Custom Stylesheet
-   Bootstrap 5 is loaded separately via CDN
-   ============================================ */
-
-/* ── CSS VARIABLES ── */
 :root {
-  --bg:              #0e0e0e;
-  --card-bg:         rgba(28, 26, 34, 0.78);
-  --card-border:     rgba(255, 255, 255, 0.10);
-  --text-muted:      rgba(255, 255, 255, 0.35);
-  --nav-btn:         rgba(255, 255, 255, 0.08);
-  --nav-btn-hover:   rgba(255, 255, 255, 0.18);
-  --day-hover:       rgba(255, 255, 255, 0.10);
-  --today-bg:        rgba(255, 255, 255, 0.93);
-  --today-text:      #0e0e0e;
+  --bg: #0e0e0e;
+  --card-bg: rgba(28, 26, 34, 0.78);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --text-muted: rgba(255, 255, 255, 0.35);
+  --nav-btn: rgba(255, 255, 255, 0.08);
+  --nav-btn-hover: rgba(255, 255, 255, 0.18);
+  --day-hover: rgba(255, 255, 255, 0.10);
+  --today-bg: rgba(255, 255, 255, 0.93);
+  --today-text: #0e0e0e;
 }
 
-/* ── RESET ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ── BASE ── */
 html, body {
   min-height: 100vh;
   background-color: var(--bg);
@@ -31,9 +23,6 @@ html, body {
   color: #fff;
 }
 
-/* ────────────────────────────────────────────
-   BACKGROUND BLOBS
-──────────────────────────────────────────── */
 .blob-wrap {
   position: fixed;
   inset: 0;
@@ -65,9 +54,6 @@ html, body {
   opacity: 0.88;
 }
 
-/* ────────────────────────────────────────────
-   PAGE LAYOUT
-──────────────────────────────────────────── */
 .page-wrap {
   position: relative;
   z-index: 1;
@@ -89,9 +75,6 @@ html, body {
   text-align: center;
 }
 
-/* ────────────────────────────────────────────
-   VIEW TOGGLE BUTTONS
-──────────────────────────────────────────── */
 .view-toggle {
   display: flex;
   gap: 8px;
@@ -122,9 +105,6 @@ html, body {
   color: #fff;
 }
 
-/* ────────────────────────────────────────────
-   MONTH TABS
-──────────────────────────────────────────── */
 .month-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -158,9 +138,6 @@ html, body {
   color: #fff;
 }
 
-/* ────────────────────────────────────────────
-   GLASS CARD
-──────────────────────────────────────────── */
 .cal-card {
   background: var(--card-bg);
   backdrop-filter: blur(24px);
@@ -176,10 +153,9 @@ html, body {
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Card Header ── */
 .cal-header {
   display: flex;
   align-items: center;
@@ -193,7 +169,6 @@ html, body {
   color: #fff;
 }
 
-/* ── Nav Buttons ── */
 .nav-btn {
   width: 38px;
   height: 38px;
@@ -215,9 +190,6 @@ html, body {
   color: #fff;
 }
 
-/* ────────────────────────────────────────────
-   BOOTSTRAP TABLE OVERRIDES
-──────────────────────────────────────────── */
 .cal-table {
   width: 100%;
   border-collapse: separate;
@@ -245,7 +217,6 @@ html, body {
   cursor: pointer;
 }
 
-/* ── Day inner circle ── */
 .cal-table tbody td .di {
   display: inline-flex;
   align-items: center;
@@ -264,7 +235,6 @@ html, body {
   color: #fff;
 }
 
-/* ── Other month days ── */
 .cal-table tbody td.om .di {
   color: rgba(255, 255, 255, 0.28);
 }
@@ -274,14 +244,12 @@ html, body {
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* ── Today ── */
 .cal-table tbody td.today .di {
   background: var(--today-bg);
   color: var(--today-text);
   font-weight: 600;
 }
 
-/* ── Selected day ── */
 .cal-table tbody td.sel .di {
   background: rgba(255, 255, 255, 0.15);
   border: 1.5px solid rgba(255, 255, 255, 0.55);
@@ -289,9 +257,6 @@ html, body {
   font-weight: 500;
 }
 
-/* ────────────────────────────────────────────
-   ALL 12 MONTHS VIEW
-──────────────────────────────────────────── */
 .all-view {
   display: none;
   width: 100%;
@@ -308,7 +273,6 @@ html, body {
   gap: 20px;
 }
 
-/* ── Mini card (used in all-months grid) ── */
 .mini-card {
   background: var(--card-bg);
   backdrop-filter: blur(22px);
@@ -335,9 +299,6 @@ html, body {
   padding-bottom: 10px;
 }
 
-/* ────────────────────────────────────────────
-   RESPONSIVE
-──────────────────────────────────────────── */
 @media (max-width: 580px) {
   .cal-card {
     padding: 22px 14px 18px;
