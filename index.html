@@ -5,41 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calendar 2026</title>
 
-  <!-- Bootstrap 5 CSS (CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"/>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- Background Blobs -->
   <div class="blob-wrap">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
   </div>
 
-  <!-- Page Content -->
   <div class="page-wrap">
 
     <h1 class="page-title">Calendar 2026</h1>
 
-    <!-- View Toggle Buttons -->
     <div class="view-toggle">
       <button class="v-btn active" id="btn-single">Single Month</button>
       <button class="v-btn" id="btn-all">All 12 Months</button>
     </div>
 
-    <!-- SINGLE MONTH VIEW -->
     <div id="single-view" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:24px;">
 
-      <!-- Month Tab Navigation -->
       <div class="month-tabs" id="month-tabs"></div>
 
-      <!-- Glass Card -->
       <div class="cal-card">
         <div class="cal-header">
           <button class="nav-btn" id="prev">&#8249;</button>
@@ -47,7 +38,7 @@
           <button class="nav-btn" id="next">&#8250;</button>
         </div>
 
-        <!-- Bootstrap Table -->
+
         <table class="cal-table table">
           <thead>
             <tr>
@@ -60,17 +51,16 @@
 
     </div>
 
-    <!-- ALL 12 MONTHS VIEW -->
     <div class="all-view" id="all-view">
       <div class="months-grid" id="months-grid"></div>
     </div>
 
   </div>
 
-  <!-- Bootstrap 5 JS (CDN) -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom Script -->
+
   <script src="script.js"></script>
 
 </body>
