@@ -1,8 +1,3 @@
-/* ============================================
-   CALENDAR 2026 — JavaScript
-   Handles rendering, navigation, and toggling
-   ============================================ */
-
 const MONTHS = [
   "January", "February", "March",    "April",
   "May",     "June",     "July",     "August",
@@ -12,10 +7,9 @@ const MONTHS = [
 const YEAR  = 2026;
 const today = new Date();
 
-let cur = 0;   // current month index (0 = January)
-let sel = null; // selected date { m, d }
+let cur = 0;   
+let sel = null; 
 
-/* ── UTILITY: check if a given year/month/day is today ── */
 function isToday(m, d) {
   return (
     today.getFullYear() === YEAR &&
@@ -24,19 +18,14 @@ function isToday(m, d) {
   );
 }
 
-/* ────────────────────────────────────────────
-   BUILD CALENDAR TABLE BODY
-   mi   = month index (0-11)
-   mini = true when rendering the small all-months cards
-──────────────────────────────────────────── */
 function buildBody(mi, mini) {
-  const firstDay  = new Date(YEAR, mi, 1).getDay();        // weekday of 1st
-  const totalDays = new Date(YEAR, mi + 1, 0).getDate();   // days in month
-  const prevDays  = new Date(YEAR, mi, 0).getDate();       // days in prev month
+  const firstDay  = new Date(YEAR, mi, 1).getDay();        
+  const totalDays = new Date(YEAR, mi + 1, 0).getDate();   
+  const prevDays  = new Date(YEAR, mi, 0).getDate();       
 
   let html = '';
-  let d    = 1;   // current month day counter
-  let nd   = 1;   // next month day counter
+  let d    = 1;   
+  let nd   = 1;   
 
   const rows = (firstDay + totalDays > 35) ? 6 : 5;
 
@@ -47,12 +36,10 @@ function buildBody(mi, mini) {
       const cell = r * 7 + c;
 
       if (cell < firstDay) {
-        /* — trailing days from previous month — */
         const pd = prevDays - firstDay + c + 1;
         html += `<td class="om"><span class="di">${pd}</span></td>`;
 
       } else if (d <= totalDays) {
-        /* — days in current month — */
         let cls = '';
         if (isToday(mi, d)) {
           cls = 'today';
@@ -65,7 +52,7 @@ function buildBody(mi, mini) {
         d++;
 
       } else {
-        /* — leading days from next month — */
+        
         html += `<td class="om"><span class="di">${nd++}</span></td>`;
       }
     }
@@ -76,22 +63,16 @@ function buildBody(mi, mini) {
   return html;
 }
 
-/* ────────────────────────────────────────────
-   RENDER SINGLE MONTH VIEW
-──────────────────────────────────────────── */
 function renderSingle() {
-  // Update heading
   document.getElementById('month-label').textContent = MONTHS[cur] + ' ' + YEAR;
 
-  // Update table body
   document.getElementById('cal-body').innerHTML = buildBody(cur, false);
 
-  // Update active tab
+
   document.querySelectorAll('.m-tab').forEach((tab, i) => {
     tab.classList.toggle('active', i === cur);
   });
-
-  // Attach click events to each day cell
+   
   document.querySelectorAll('#cal-body td[data-d]').forEach(td => {
     td.addEventListener('click', () => {
       sel = { m: parseInt(td.dataset.m), d: parseInt(td.dataset.d) };
@@ -100,15 +81,12 @@ function renderSingle() {
   });
 }
 
-/* ────────────────────────────────────────────
-   BUILD MONTH TAB BUTTONS  (Jan … Dec)
-──────────────────────────────────────────── */
 const tabsEl = document.getElementById('month-tabs');
 
 MONTHS.forEach((name, i) => {
   const btn = document.createElement('button');
   btn.className   = 'm-tab' + (i === 0 ? ' active' : '');
-  btn.textContent = name.slice(0, 3); // "Jan", "Feb", etc.
+  btn.textContent = name.slice(0, 3); 
   btn.addEventListener('click', () => {
     cur = i;
     renderSingle();
@@ -116,7 +94,6 @@ MONTHS.forEach((name, i) => {
   tabsEl.appendChild(btn);
 });
 
-/* ── Prev / Next navigation ── */
 document.getElementById('prev').addEventListener('click', () => {
   cur = (cur - 1 + 12) % 12;
   renderSingle();
@@ -127,12 +104,9 @@ document.getElementById('next').addEventListener('click', () => {
   renderSingle();
 });
 
-/* Initial render */
+
 renderSingle();
 
-/* ────────────────────────────────────────────
-   RENDER ALL 12 MONTHS VIEW
-──────────────────────────────────────────── */
 function renderAll() {
   const grid = document.getElementById('months-grid');
   grid.innerHTML = '';
@@ -157,9 +131,6 @@ function renderAll() {
   });
 }
 
-/* ────────────────────────────────────────────
-   VIEW TOGGLE  (Single Month ↔ All 12 Months)
-──────────────────────────────────────────── */
 const singleView = document.getElementById('single-view');
 const allView    = document.getElementById('all-view');
 const btnSingle  = document.getElementById('btn-single');
